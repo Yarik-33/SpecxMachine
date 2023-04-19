@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div>
+    <div class="admin-links-container">
+        <div class="add-product-link-div">
+            <a class="admin-link" href="http://localhost:8083/addMachine">
+                Add machine
+            </a>
+        </div>
+        <div class="add-product-link-div">
+            <a class="admin-link" href="#">
+                Delete machine
+            </a>
+            <div>
+                <form action="http://localhost:8083/machine/delete" method="post" enctype="multipart/form-data" >
+                    <label for="deleteForm">Input product Id</label>
+                    <input class="input-form" type="text" name="sneakerId" id="deleteForm" required>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+                <p th:text="${deleteResult}"></p>
+            </div>
+        </div>
+        <div class="add-product-link-div">
+            <a class="admin-link" href="#">
+                Edit machine
+            </a>
+        </div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sneaker : ${sneakers}">
+            <td th:text="${sneaker.id}"></td>
+            <td th:text="${sneaker.name}"></td>
+            <td th:text="${sneaker.price}"></td>
+            <td th:text="${sneaker.createDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
