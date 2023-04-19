@@ -15,9 +15,8 @@ spring:
     init:
       mode: always
       continue-on-error: true
-
-  server:
-    port: 8084
+server:
+  port: 8084
 
 
 
