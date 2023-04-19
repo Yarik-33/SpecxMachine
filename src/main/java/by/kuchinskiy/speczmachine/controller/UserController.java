@@ -12,21 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-
-    @PostMapping("/saveUser")
+    @PostMapping("/userSave")
     public String addUser(@RequestParam(name = "login") String login,
                           @RequestParam(name = "password") String password) {
-
         Role role = new Role();
         role.setName("USER");
-
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
         user.setRole(role);
-
         userService.save(user);
-
         return "index";
     }
 }
